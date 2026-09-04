@@ -18,7 +18,7 @@ public class App {
         if (fila == N) {
             soluciones++;
             System.out.println("Solución " + soluciones + ":");
-            imprimirTablero();
+            mostrarTablero();
             return;
         }
 
@@ -32,18 +32,19 @@ public class App {
     }
 
     static boolean esSeguro(int fila, int col) {
+        // Verificar la columna
         for (int i = 0; i < fila; i++) {
             if (tablero[i][col] == 1) {
                 return false;
             }
         }
-
+// Verificar la diagonal superior izquierda
         for (int i = fila, j = col; i >= 0 && j >= 0; i--, j--) {
             if (tablero[i][j] == 1) {
                 return false;
             }
         }
-
+// Verificar la diagonal superior derecha
         for (int i = fila, j = col; i >= 0 && j < N; i--, j++) {
             if (tablero[i][j] == 1) {
                 return false;
@@ -51,5 +52,15 @@ public class App {
         }
 
         return true;
+    }
+
+    static void mostrarTablero() {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                System.out.print(tablero[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
